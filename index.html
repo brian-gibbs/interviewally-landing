@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewAlly — Stop freezing in the room.</title>
+    <meta name="description" content="AI-powered interview prep that turns your resume into STAR stories. Built for career changers, workforce development participants, and neurodivergent job seekers.">
+    <meta property="og:title" content="InterviewAlly — Stop freezing in the room.">
+    <meta property="og:description" content="Turn your resume into structured STAR stories. Practice with AI interviewers who actually push back.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://interviewally.net">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #0d0d0d;
+            color: #e8e4df;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- Nav --- */
+        nav {
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 80px;
+        }
+        .wordmark {
+            font-family: 'DM Serif Display', serif;
+            font-size: 20px;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+        .wordmark span {
+            color: #C8965A;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            margin-bottom: 80px;
+        }
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(36px, 6vw, 56px);
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        .hero p {
+            font-size: 18px;
+            color: #a09a93;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        /* --- Sections --- */
+        section {
+            margin-bottom: 72px;
+        }
+        section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        section p {
+            color: #a09a93;
+            font-size: 16px;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        /* --- Steps --- */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-top: 24px;
+        }
+        .step {
+            border-left: 2px solid #C8965A;
+            padding-left: 24px;
+        }
+        .step-number {
+            font-size: 13px;
+            font-weight: 700;
+            color: #C8965A;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+        }
+        .step h3 {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .step p {
+            font-size: 15px;
+            color: #a09a93;
+            margin-bottom: 0;
+        }
+
+        /* --- Before/After --- */
+        .compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .compare { grid-template-columns: 1fr; }
+        }
+        .compare-card {
+            padding: 24px;
+            border-radius: 8px;
+        }
+        .compare-card.before {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .compare-card.after {
+            background: rgba(200,150,90,0.06);
+            border: 1px solid rgba(200,150,90,0.15);
+        }
+        .compare-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        .before .compare-label { color: #666; }
+        .after .compare-label { color: #C8965A; }
+        .compare-card p { font-size: 14px; margin-bottom: 8px; }
+        .compare-card .italic { font-style: italic; color: #777; }
+        .star-label {
+            color: #C8965A;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* --- Audience --- */
+        .audience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .audience-item {
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .audience-item strong {
+            color: #fff;
+        }
+        .audience-item p {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        /* --- Waitlist form --- */
+        .waitlist {
+            background: rgba(200,150,90,0.05);
+            border: 1px solid rgba(200,150,90,0.15);
+            border-radius: 12px;
+            padding: 48px 40px;
+            margin-bottom: 72px;
+        }
+        @media (max-width: 600px) {
+            .waitlist { padding: 32px 20px; }
+        }
+        .waitlist h2 {
+            margin-bottom: 8px;
+        }
+        .waitlist p {
+            margin-bottom: 24px;
+        }
+        .form-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        @media (max-width: 500px) {
+            .form-row { flex-direction: column; }
+        }
+        input[type="email"],
+        input[type="text"] {
+            flex: 1;
+            padding: 14px 16px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 6px;
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus {
+            border-color: #C8965A;
+        }
+        input::placeholder {
+            color: #555;
+        }
+        button[type="submit"] {
+            padding: 14px 28px;
+            background: #C8965A;
+            color: #0d0d0d;
+            border: none;
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        button[type="submit"]:hover {
+            background: #d9a96b;
+        }
+        .form-note {
+            font-size: 13px;
+            color: #555;
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+
+        /* --- About --- */
+        .about-builder {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 48px;
+            margin-bottom: 48px;
+        }
+        .about-builder p {
+            font-size: 15px;
+        }
+        .about-builder a {
+            color: #C8965A;
+            text-decoration: none;
+        }
+        .about-builder a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 32px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            margin-top: 24px;
+        }
+        footer p {
+            font-size: 13px;
+            color: #444;
+        }
+        footer a {
+            color: #555;
+            text-decoration: none;
+        }
+        footer a:hover { color: #C8965A; }
+
+        /* --- Thank you state --- */
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .thank-you h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .thank-you p {
+            color: #a09a93;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <nav>
+            <div class="wordmark">Interview<span>Ally</span></div>
+        </nav>
+
+        <div class="hero">
+            <h1>Stop freezing in the room.</h1>
+            <p>InterviewAlly turns your resume into structured STAR stories, then helps you practice delivering them — with AI interviewers who actually push back.</p>
+        </div>
+
+        <section>
+            <h2>You've done the work. You just can't recall it under pressure.</h2>
+            <p>You've led projects, solved problems, managed teams, hit targets. But when someone asks "Tell me about a time you..." your mind goes blank.</p>
+            <p>It's not a confidence problem. It's a preparation problem. And nobody's built a real tool for it — until now.</p>
+        </section>
+
+        <section>
+            <h2>From resume to ready.</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">Step 1</div>
+                    <h3>Upload your resume</h3>
+                    <p>InterviewAlly parses your experience — roles, responsibilities, achievements — and identifies the stories hiding in your work history.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">Step 2</div>
+                    <h3>Generate STAR stories</h3>
+                    <p>Your experiences become Situation, Task, Action, Result. Real stories from your real career, organized so you can actually recall them.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">Step 3</div>
+                    <h3>Practice with AI interviewers</h3>
+                    <p>Mock sessions with AI that asks real behavioral questions and pushes back on vague answers. Speech analysis and feedback on clarity, structure, and confidence.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>The difference preparation makes.</h2>
+            <div class="compare">
+                <div class="compare-card before">
+                    <div class="compare-label">Without InterviewAlly</div>
+                    <p class="italic">"I led the marketing campaign for our product launch and we did really well with social media and events."</p>
+                    <p style="color:#555; font-size:13px;">Generic. Forgettable. No proof.</p>
+                </div>
+                <div class="compare-card after">
+                    <div class="compare-label">With InterviewAlly</div>
+                    <p><span class="star-label">S:</span> Tasked with launching a new product line on a limited budget.</p>
+                    <p><span class="star-label">T:</span> Generate 10,000 pre-orders in 30 days using only organic channels.</p>
+                    <p><span class="star-label">A:</span> Built a grassroots campaign across three cities, coordinating 8 field marketers.</p>
+                    <p><span class="star-label">R:</span> 15,000 pre-orders in 28 days. 300% ROI. Framework adopted company-wide.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Built for people who don't have a coach.</h2>
+            <div class="audience-list">
+                <div class="audience-item">
+                    <p><strong>Career changers</strong> who have transferable skills but struggle to frame them for a new industry.</p>
+                </div>
+                <div class="audience-item">
+                    <p><strong>Workforce development participants</strong> preparing for interviews without access to one-on-one coaching.</p>
+                </div>
+                <div class="audience-item">
+                    <p><strong>Neurodivergent job seekers</strong> — especially those with ADHD — who know their stories but can't retrieve them under pressure.</p>
+                </div>
+                <div class="audience-item">
+                    <p><strong>Anyone with a nonlinear career</strong> who's been told "just be yourself" and knows that's not enough.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="waitlist">
+            <h2>Get early access.</h2>
+            <p>InterviewAlly is in development. Join the list to be first in — and to help shape what gets built.</p>
+            <form id="waitlist-form" action="https://formsubmit.co/brian@thewebweweave.online" method="POST">
+                <input type="hidden" name="_subject" value="New InterviewAlly Waitlist Signup">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://interviewally.net#thanks">
+                <div class="form-row">
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <button type="submit">Join the List</button>
+                </div>
+                <div class="form-row">
+                    <input type="text" name="challenge" placeholder="What's your biggest interview challenge? (optional)">
+                </div>
+                <p class="form-note">No spam. No selling your data. Just updates on when you can start prepping.</p>
+            </form>
+            <div class="thank-you" id="thank-you">
+                <h3>You're on the list.</h3>
+                <p>We'll reach out when early access opens.</p>
+            </div>
+        </div>
+
+        <div class="about-builder">
+            <h2>Built by someone who needed it.</h2>
+            <p>I'm Brian Gibbs. 22 years in live events and brand activations — NFL stadiums, major festivals, campaigns for Diageo, Samsung, Amazon, Walmart+. I also have ADHD. I've walked into interviews with a decade of leadership experience and blanked on the simplest behavioral question.</p>
+            <p>Not because I didn't have the stories. Because I didn't have a system to recall them. InterviewAlly is that system.</p>
+            <p><a href="https://brianandhisbrain.com">brianandhisbrain.com</a></p>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 InterviewAlly &middot; Built by <a href="https://brianandhisbrain.com">Brian &amp; His Br.AI.n</a></p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Show thank you message if redirected back after form submit
+        if (window.location.hash === '#thanks') {
+            document.getElementById('waitlist-form').style.display = 'none';
+            document.getElementById('thank-you').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
